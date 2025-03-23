@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import logo from '../assets/logo.png'
 import Container from './Container'
 import { Link } from 'react-router-dom'
+import { menus } from '../mydata/Menudata'
 
 const Menu = () => {
-    let [menuList, setMenuList] = useState(['Home', 'Shop', 'About', 'Contact'])
+    let menulist = useContext(menus)
   return (
     <Container>
         <div className="menu flex items-center py-[32px]">
@@ -14,7 +15,7 @@ const Menu = () => {
             <div className="menus w-[85%]">
                 <ul className='flex justify-center gap-3'>
                     {
-                        menuList.map((item, i)=>(
+                        menulist.map((item, i)=>(
                             <li key={i} className='cursor-pointer'>
                                 <Link to={`/${item}`}>{item}</Link>
                             </li>
