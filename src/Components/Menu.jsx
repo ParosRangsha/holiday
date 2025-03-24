@@ -8,7 +8,7 @@ const Menu = () => {
     let menulist = useContext(menus)
   return (
     <Container>
-        <div className="menu flex items-center py-[32px]">
+        <div className="menu flex items-center py-[32px] z-50">
             <div className="logo w-[15%]">
                 <img src={logo} alt="logo" />
             </div>

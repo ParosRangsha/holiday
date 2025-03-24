@@ -39,10 +39,10 @@ const Search = () => {
     },[info, cateshow, usershow, cartshow])
     
   return (
-    <div className="searchbar bg-[#D8D8D8]">
+    <div className="searchbar bg-[#D8D8D8] z-50">
         <Container>
             <div className="flex items-center">
-                <div className="category flex items-center gap-3 w-[33%] relative py-[25px]" ref={cateref}>
+                <div className="category flex items-center gap-3 w-[33%] relative py-[25px] z-50" ref={cateref}>
                     <HiOutlineBars3BottomLeft/> Shop by Category
                     {
                         cateshow &&
@@ -55,11 +55,11 @@ const Search = () => {
                         </ul>
                     }
                 </div>
-                <div className="searchbox w-[33%] relative">
+                <div className="searchbox w-[33%] relative z-50">
                     <input type="text" placeholder='Search Products' className='w-full py-[16px] px-[21px] outline-none'/>
                     <CiSearch className='absolute top-[50%] right-[21px] translate-y-[-50%]'/>
                 </div>
-                <div className="btnicon w-[33%] flex justify-end gap-3 relative">
+                <div className="btnicon w-[33%] flex justify-end gap-3 relative z-50">
                     <div className="user flex items-center  py-[25px]" ref={userref}>
                         <FaUser/><IoIosArrowDown/>
                         {
