@@ -15,28 +15,6 @@ const Banner = () => {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        appendDots: dots => (
-            <div
-              style={{
-                borderRadius: "10px",
-                padding: "10px",
-                position: "absolute",
-                bottom: "0px",
-              }}
-            >
-              <ul style={{ margin: "0px" }}> {dots} </ul>
-            </div>
-          ),
-          customPaging: i => (
-            <div
-              style={{
-                width: "30px",
-                color: "#555",
-              }}
-            >
-              {i + 1}
-            </div>
-          )
       };
   return (
     <div className="">
@@ -47,7 +25,7 @@ const Banner = () => {
                     <div className='banner'>
                         <div className="flex py-[50px]">
                             <div className="txt w-1/2 flex flex-col justify-center items-center">
-                                <h1>{item.title}</h1>
+                                <h1 className='text-[40px] font-bold'>{item.title}</h1>
                                 <div className="off flex items-center">
                                     <h3>Up to </h3>&nbsp;
                                     <h3 className='text-[20px] font-bold'> {item.discountPercentage}%</h3>&nbsp;

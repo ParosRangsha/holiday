@@ -4,10 +4,10 @@ import Search from './Search'
 
 const Header = () => {
   return (
-    <>
-      <Menu/>
-      <Search/>
-    </>
+    <div className="sticky top-0 left-0 w-full z-[999]">
+        <Menu/>
+        <Search/>
+    </div>
   )
 }
 
