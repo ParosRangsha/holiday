@@ -16,7 +16,7 @@ const Productdetails = () => {
     useEffect(()=>{
         singledata()
     },[])
-
+    
     let [desShow, setDesShow] = useState(false)
     let handleHide = ()=>{
         setDesShow(false)
@@ -38,6 +38,7 @@ const Productdetails = () => {
     let handleReprotRev = ()=>{
         setreportType('rev')
     }
+   
   return (
     <>
     <div className="productDetails py-[30px]">
@@ -83,10 +84,20 @@ const Productdetails = () => {
                     {settingShow && <p className='text-justify p-[10px]'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic fugiat voluptatibus labore omnis, harum commodi unde eius numquam aut laborum.</p>}
                 </div>
                 <div className="description">
-                    <div className="desttitle flex gap-2">
+                    <div className="desttitle flex gap-2 px-[10px]">
                         <p className={`${reportType == 'des' ? 'font-bold':'font-normal cursor-pointer'}`} onClick={()=>handleReprotDes()}>Description</p>
                         <p className={`${reportType == 'rev' ? 'font-bold':'font-normal cursor-pointer'}`} onClick={()=>handleReprotRev()}>Reviews</p>
                     </div>
+                    {reportType == "des" &&
+                    <div className=''>
+                        <p className='w-[600px] px-[10px]'>{singleProduct.description}</p>
+                    </div>}
+                    {reportType == "rev" &&
+                    <div className='px-[10px]'>
+                        <div className="">
+                            <h1>hello Reviews</h1>
+                        </div>
+                    </div>}
                 </div>
             </div>
         </Container>

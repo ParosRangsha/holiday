@@ -22,7 +22,7 @@ const Banner = () => {
             <Slider {...settings}>
             {
                 pinfo.map((item, i)=>(
-                    <div className='banner'>
+                    <div className='banner' key={i}>
                         <div className="flex py-[50px]">
                             <div className="txt w-1/2 flex flex-col justify-center items-center">
                                 <h1 className='text-[40px] font-bold'>{item.title}</h1>
