@@ -24,20 +24,21 @@ const Productdetails = () => {
     let handleShow = ()=>{
         setDesShow(true)
     }
-    let [settingShow, setSettingShow] = useState(true)
+    let [settingShow, setSettingShow] = useState(false)
     let handleSettingHide = ()=>{
         setSettingShow(false)
     }
     let handleSettingShow = ()=>{
         setSettingShow(true)
     }
-    let [reportType, setreportType] = useState('rev')
+    let [reportType, setreportType] = useState('des')
     let handleReprotDes = ()=>{
         setreportType('des')
     }
     let handleReprotRev = ()=>{
         setreportType('rev')
     }
+    
    
   return (
     <>
