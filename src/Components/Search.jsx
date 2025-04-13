@@ -6,6 +6,7 @@ import { FaUser, FaShoppingCart } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 import { Apidata } from '../mydata/ProductsApi';
 import Mybtn from './Mybtn';
+import { Link } from 'react-router-dom';
 
 const Search = () => {
     let info = useContext(Apidata)
@@ -16,6 +17,20 @@ const Search = () => {
     let cateref = useRef()
     let userref = useRef()
     let cartref = useRef()
+    let searchref = useRef()
+    
+    let [searchResult, setSearchResult] = useState('')
+    let [searchFilter, setSearchFilter] = useState([])
+    let handlesearch = (e)=>{
+        setSearchResult(e.target.value);
+        if(e.target.value == ''){
+            setSearchFilter([])
+        }else{
+            let searchget = info.filter((item)=>item.title.toLowerCase().includes(e.target.value.toLowerCase()))
+            setSearchFilter(searchget)
+        }
+
+    } 
     
     useEffect(()=>{
         document.addEventListener('click',(e)=>{
@@ -34,9 +49,17 @@ const Search = () => {
             }else{
                 setcartshow(false)
             }
+            if(searchref.current.contains(e.target)){
+                console.log('thick ache');
+                
+            }else{
+                setSearchFilter([])
+            }
         })
         setcatelist([...new Set(info.map((item) => item.category))]);
     },[info, cateshow, usershow, cartshow])
+
+    
     
   return (
     <div className="searchbar bg-[#D8D8D8] z-50">
@@ -55,9 +78,21 @@ const Search = () => {
                         </ul>
                     }
                 </div>
-                <div className="searchbox w-[33%] relative z-50">
-                    <input type="text" placeholder='Search Products' className='w-full py-[16px] px-[21px] outline-none'/>
+                <div className="searchbox w-[33%] z-50 relative">
+                    <input type="text" placeholder='Search Products' className='w-full py-[16px] px-[21px] outline-none' onChange={handlesearch} ref={searchref}/>
                     <CiSearch className='absolute top-[50%] right-[21px] translate-y-[-50%]'/>
+                    <ul className={`absolute top-[100%] left-0 w-full overflow-scroll bg-[#922] text-[#fff] px-[20px] ${searchFilter.length > 0 ? 'h-[300px]' : 'h-0'}`}>
+                        {
+                            searchFilter.map((item)=>(
+                                <Link to={`search/${item.id}`}>
+                                    <li className='flex justify-between items-center cursor-pointer hover:bg-[#eee] hover:text-[#000] p-[10px]'>
+                                        <p>{item.title}</p>
+                                        <img src={item.thumbnail} alt="" className='w-[50px]'/>
+                                    </li>
+                                </Link>
+                            ))
+                        }
+                    </ul>
                 </div>
                 <div className="btnicon w-[33%] flex justify-end gap-3 relative z-50">
                     <div className="user flex items-center  py-[25px]" ref={userref}>

@@ -15,7 +15,7 @@ const Productdetails = () => {
     }
     useEffect(()=>{
         singledata()
-    },[])
+    },[productid])
     
     let [desShow, setDesShow] = useState(false)
     let handleHide = ()=>{

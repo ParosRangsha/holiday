@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './Header'
 import { Outlet } from 'react-router-dom'
 import Footer from './Footer'
+import Construction from './Construction'
 
 const Layout = () => {
   return (
@@ -9,6 +10,7 @@ const Layout = () => {
     <Header/>
     <Outlet/>
     <Footer/>
+    <Construction/>
     </>
   )
 }
