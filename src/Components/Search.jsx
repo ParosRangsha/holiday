@@ -50,7 +50,6 @@ const Search = () => {
                 setcartshow(false)
             }
             if(searchref.current.contains(e.target)){
-                console.log('thick ache');
                 
             }else{
                 setSearchFilter([])
@@ -83,8 +82,8 @@ const Search = () => {
                     <CiSearch className='absolute top-[50%] right-[21px] translate-y-[-50%]'/>
                     <ul className={`absolute top-[100%] left-0 w-full overflow-scroll bg-[#922] text-[#fff] px-[20px] ${searchFilter.length > 0 ? 'h-[300px]' : 'h-0'}`}>
                         {
-                            searchFilter.map((item)=>(
-                                <Link to={`search/${item.id}`}>
+                            searchFilter.map((item, i)=>(
+                                <Link key={i} to={`search/${item.id}`}>
                                     <li className='flex justify-between items-center cursor-pointer hover:bg-[#eee] hover:text-[#000] p-[10px]'>
                                         <p>{item.title}</p>
                                         <img src={item.thumbnail} alt="" className='w-[50px]'/>
@@ -100,7 +99,7 @@ const Search = () => {
                         {
                             usershow &&
                             <ul className='absolute bg-[#000] text-[#fff] top-full w-[200px] right-0'>
-                                <li className='py-[16px] px-[21px] hover:px-[40px] duration-[0.5s] cursor-pointer hover:bg-[#fff] hover:text-[#000]'>My Account</li>
+                                <li className='py-[16px] px-[21px] hover:px-[40px] duration-[0.5s] cursor-pointer hover:bg-[#fff] hover:text-[#000]'><Link to='/login'>My Account</Link></li>
                                 <li className='py-[16px] px-[21px] hover:px-[40px] duration-[0.5s] cursor-pointer hover:bg-[#fff] hover:text-[#000]'>Log Out</li>
                             </ul>
                         }
