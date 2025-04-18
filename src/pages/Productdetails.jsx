@@ -1,10 +1,13 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import Container from '../Components/Container'
 import { FaPlus, FaMinus } from "react-icons/fa6";
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../slice/ProductsSlice';
 
 const Productdetails = () => {
+    let dispatch = useDispatch()
     let productid = useParams()
     let [singleProduct, setSingleProduct] = useState([])
     let singledata = ()=>{
@@ -38,6 +41,10 @@ const Productdetails = () => {
     let handleReprotRev = ()=>{
         setreportType('rev')
     }
+    let navigate = useNavigate('')
+    let handleCart = (item)=>{
+        dispatch(addToCart({...item, qun: 1}))
+    }
     
    
   return (
@@ -64,7 +71,7 @@ const Productdetails = () => {
                 </div>
                 <div className="btns flex gap-2">
                     <Link to='/wishlist' className='inline-block py-[10px] px-[15px] bg-[#000] text-[#fff] font-bold hover:bg-[#ccc] hover:text-[#002] border-[1px] hover:border-[#002] rounded-[5px]'>Add to Wish List</Link>
-                    <Link to='/cart' className='inline-block py-[10px] px-[15px] bg-[#000] text-[#fff] font-bold hover:bg-[#ccc] hover:text-[#002] border-[1px] hover:border-[#002] rounded-[5px]'>Add to Cart</Link>
+                    <button onClick={()=>handleCart(singleProduct)} className='inline-block py-[10px] px-[15px] bg-[#000] text-[#fff] font-bold hover:bg-[#ccc] hover:text-[#002] border-[1px] hover:border-[#002] rounded-[5px]'>Add to Cart</button>
                 </div>
                 <div className="details w-[600px] bg-[#ddd]">
                     <div className="heading flex justify-between items-center">

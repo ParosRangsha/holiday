@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import Container from '../Components/Container'
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
+    let navigate = useNavigate('')
     const auth = getAuth();
     let [email, setEmail] = useState('')
     let [password, setPassword] = useState('')
@@ -14,14 +16,13 @@ const Signup = () => {
     }
     let hanleSignUp = (e)=>{
         createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            console.log('ami paisi', userCredential);
+        .then((user) => {
+            navigate('/login')          
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log('painai');
-            
+            console.log('painai')            
         });
     }
   return (

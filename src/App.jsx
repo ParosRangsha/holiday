@@ -8,21 +8,27 @@ import Shop from './pages/Shop'
 import Productdetails from './pages/Productdetails'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
+import Errorpage from './pages/Errorpage'
+import Cart from './pages/Cart'
 
 function App() {
   let multipage = createBrowserRouter(createRoutesFromElements(
-    <Route element={<Layout/>}>
-      <Route path='/' element={<Home/>}/>
-      <Route path='/home' element={<Home/>}/>
-      <Route path='/about' element={<About/>}/>
-      <Route path='/contact' element={<Contact/>}/>
-      <Route path='/shop' element={<Shop/>}/>
-      <Route path='/login' element={<Login/>}/>
-      <Route path='/signup' element={<Signup/>}/>
-      <Route path='/shop/:id' element={<Productdetails/>}/>
-      <Route path='/home/:id' element={<Productdetails/>}/>
-      <Route path='/search/:id' element={<Productdetails/>}/>
-    </Route>
+    <>
+      <Route element={<Layout/>}>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/home' element={<Home/>}/>
+        <Route path='/about' element={<About/>}/>
+        <Route path='/contact' element={<Contact/>}/>
+        <Route path='/shop' element={<Shop/>}/>
+        <Route path='/cart' element={<Cart/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/signup' element={<Signup/>}/>
+        <Route path='/shop/:id' element={<Productdetails/>}/>
+        <Route path='/home/:id' element={<Productdetails/>}/>
+        <Route path='/search/:id' element={<Productdetails/>}/>
+      </Route>
+      <Route path='*' element={<Errorpage/>}/>
+    </>
   ))
   
   return (
